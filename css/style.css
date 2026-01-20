@@ -472,3 +472,64 @@ header .logo img {
   }
 }
 
+/* ================= HAMBURGER MENU ================= */
+
+/* Hide the checkbox */
+#menu-toggle {
+  display: none;
+}
+
+/* Hamburger lines */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #d67c4e;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Mobile Menu */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px; /* adjust to your header height */
+    right: 0;
+    width: 200px;
+    background-color: #fff;
+    flex-direction: column;
+    gap: 0;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+
+  /* Toggle menu when checkbox is checked */
+  #menu-toggle:checked + .hamburger + .nav-links {
+    transform: translateX(0);
+  }
+}
