@@ -472,8 +472,14 @@ header .logo img {
   }
 }
 
-/* ================= HEADER & NAVIGATION ================= */
+/* ---------------- BODY ---------------- */
+body {
+  overflow-x: hidden; /* prevent horizontal scroll on mobile */
+  margin: 0;
+  padding: 0;
+}
 
+/* ---------------- HEADER ---------------- */
 header {
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -489,13 +495,12 @@ header {
   padding: 15px 30px;
 }
 
-/* Logo */
 .logo img {
   width: 150px;
   object-fit: contain;
 }
 
-/* Desktop nav links */
+/* ---------------- DESKTOP NAV ---------------- */
 .nav-links {
   display: flex;
   gap: 30px;
@@ -513,22 +518,19 @@ header {
   color: #d67c4e;
 }
 
-/* ================= HAMBURGER MENU ================= */
-
-/* Hide checkbox */
+/* ---------------- HAMBURGER ---------------- */
 #menu-toggle {
   display: none;
 }
 
-/* Hamburger lines */
 .hamburger {
-  display: none;
+  display: none; /* desktop hide */
   flex-direction: column;
   justify-content: space-around;
   width: 28px;
   height: 22px;
   cursor: pointer;
-  z-index: 1100;
+  z-index: 1300; /* on top of everything */
 }
 
 .hamburger span {
@@ -543,24 +545,24 @@ header {
 /* ---------------- MOBILE ---------------- */
 @media (max-width: 768px) {
 
-  /* Show hamburger */
+  /* Show hamburger in top-right corner */
   .hamburger {
     display: flex;
   }
 
-  /* Hide nav-links offscreen initially */
+  /* Hide nav-links initially offscreen */
   .nav-links {
-    position: fixed;       /* on top of content */
+    position: fixed;       /* removed from page flow */
     top: 0;
-    right: -250px;         /* fully offscreen */
+    right: -100%;          /* fully offscreen */
     width: 220px;
     height: 100vh;
     background-color: #fff;
     flex-direction: column;
-    padding: 70px 20px;    /* leave space for header */
+    padding: 70px 20px;
     gap: 20px;
     box-shadow: -2px 0 12px rgba(0,0,0,0.15);
-    z-index: 1000;
+    z-index: 1200;
     transition: right 0.3s ease-in-out;
     overflow-y: auto;
   }
@@ -569,12 +571,12 @@ header {
     margin: 15px 0;
   }
 
-  /* Slide menu in when checked */
+  /* Slide in menu when checked */
   #menu-toggle:checked + .hamburger + .nav-links {
     right: 0;
   }
 
-  /* Hamburger animation to cross */
+  /* Hamburger animation into cross */
   #menu-toggle:checked + .hamburger span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
   }
@@ -585,3 +587,4 @@ header {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 }
+/* ---------------- FOOTER ---------------- */
